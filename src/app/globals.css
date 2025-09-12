@@ -1,26 +1,99 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: white;
+  color: #171717;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Force darker text in all form elements */
+input, textarea, select, [role="combobox"], button[role="combobox"] {
+  color: #111827 !important; /* text-gray-900 */
+}
+
+/* Force darker placeholder text */
+input::placeholder, textarea::placeholder {
+  color: #4b5563 !important; /* text-gray-600 */
+}
+
+/* Ensure labels are dark and bold */
+label {
+  color: #111827 !important; /* text-gray-900 */
+  font-weight: 500 !important;
+}
+
+/* Darker text for select options and dropdowns */
+[role="option"], [data-radix-select-item], [data-radix-select-content] {
+  color: #111827 !important;
+}
+
+/* Fix select dropdown background - target all possible selectors */
+[data-radix-select-content],
+.bg-popover,
+[class*="bg-popover"] {
+  background-color: white !important;
+  border: 1px solid #d1d5db !important; /* border-gray-300 */
+  border-radius: 0.375rem !important; /* rounded-md */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+  z-index: 50 !important;
+}
+
+/* Override any popover background */
+:root {
+  --popover: white !important;
+  --popover-foreground: #111827 !important;
+}
+
+/* Select dropdown viewport */
+[data-radix-select-viewport] {
+  background-color: white !important;
+}
+
+/* Select dropdown items */
+[data-radix-select-item] {
+  background-color: white !important;
+  color: #111827 !important;
+  padding: 0.5rem 0.75rem !important;
+}
+
+/* Select dropdown item hover state */
+[data-radix-select-item]:hover, 
+[data-radix-select-item][data-highlighted],
+[data-radix-select-item]:focus {
+  background-color: #f3f4f6 !important; /* bg-gray-100 */
+  color: #111827 !important;
+}
+
+/* Darker text for any muted text */
+.text-muted-foreground, [data-radix-select-value] {
+  color: #374151 !important; /* text-gray-700 */
+}
+
+/* Make button text dark */
+button {
+  color: inherit;
+}
+
+/* Ensure select trigger text is dark and has white background */
+[data-radix-select-trigger] {
+  color: #111827 !important;
+  background-color: white !important;
+}
+
+/* Make sure images and their containers are not affected by our overrides */
+img {
+  background-color: initial !important;
+}
+
+/* Don't override transparent backgrounds for image overlays and containers */
+.group .bg-transparent,
+[class*="group"] .bg-transparent {
+  background-color: transparent !important;
+}
+
+/* Force white background only on form elements, not all transparent backgrounds */
+select.bg-transparent,
+input.bg-transparent,
+button[role="combobox"].bg-transparent {
+  background-color: white !important;
 }

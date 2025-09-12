@@ -1,36 +1,137 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🍌 Nano Banana Agent
+
+An AI-powered image generation and editing platform with a conversational interface. Built with Next.js 15, TypeScript, and Google's Gemini 2.5 Flash image generation capabilities.
+
+## Features
+
+### 💬 Chat Tab
+- Conversational interface for AI-powered interactions
+- Image-aware conversations with selected images
+- Natural language processing for image generation requests
+
+### 🎨 Generate Tab
+- AI image generation using Google Gemini 2.5 Flash
+- Custom prompt input for creative image generation
+- Automatic image saving and gallery integration
+
+### 🖼️ Edit Tab
+- AI-powered image editing and modifications
+- Upload existing images for editing
+- Transform images with natural language descriptions
+
+### 🎭 Themify Tab
+- Apply artistic styles and themes to existing images
+- Style transfer and artistic transformations
+- Theme-based image modifications
+
+### 🔗 Merge Tab
+- Combine multiple images using AI
+- Create composite images with intelligent merging
+- Multi-image selection and blending
+
+### 🌳 Tree View Tab
+- Visual organization of generated images
+- Hierarchical display of image relationships
+- Image management and navigation
+
+## Tech Stack
+
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4
+- **UI Components**: Radix UI primitives
+- **AI Integration**: Google Gemini 2.5 Flash (via OpenRouter)
+- **State Management**: Zustand
+- **File Handling**: Multer for uploads
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 20 or later
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Set up environment variables:
+```bash
+cp .env.example .env.local
+```
+
+4. Add your OpenRouter API key to `.env.local`:
+```
+OPENROUTER_API_KEY=your_openrouter_api_key_here
+```
+
+### Development
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Building
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Build the application for production:
 
-## Learn More
+```bash
+npm run build
+npm start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## API Routes
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `/api/chat` - Conversational AI interface
+- `/api/generate` - Image generation endpoint
+- `/api/edit` - Image editing functionality
+- `/api/themify` - Style and theme application
+- `/api/merge` - Image merging operations
+- `/api/tree` - Tree view data management
+- `/api/images-list` - Image gallery listing
+- `/api/images/[filename]` - Image serving and management
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project Structure
 
-## Deploy on Vercel
+```
+src/
+├── app/
+│   ├── api/          # API routes
+│   ├── globals.css   # Global styles
+│   ├── layout.tsx    # Root layout
+│   └── page.tsx      # Main application
+├── components/       # React components
+│   ├── ChatTab.tsx
+│   ├── GenerateTab.tsx
+│   ├── EditTab.tsx
+│   ├── ThemifyTab.tsx
+│   ├── MergeTab.tsx
+│   ├── TreeTab.tsx
+│   ├── ImageGallery.tsx
+│   └── ui/          # UI primitives
+└── lib/             # Utilities and context
+    ├── TreeContext.tsx
+    ├── imageGeneration.ts
+    ├── treeUtils.ts
+    └── utils.ts
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Run linting: `npm run lint`
+5. Submit a pull request
+
+## License
+
+This project is private and proprietary.
